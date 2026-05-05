@@ -1,0 +1,132 @@
+:root {
+    --bg: #030712;
+    --card-bg: rgba(17, 24, 39, 0.8);
+    --accent: #00d2ff;
+    --accent-alt: #3a7bd5;
+    --text: #f9fafb;
+    --text-dim: #9ca3af;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* --- FULL BACKGROUND LOGO WITH GLOW --- */
+.bg-logo-watermark {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('Modern Sohamir IT Services logo.png') no-repeat center center;
+    background-size: cover;
+    opacity: 0.12; /* Slightly higher so the glow is visible */
+    
+    /* This creates the "Logo Only" glow effect */
+    filter: grayscale(100%) brightness(1.2) drop-shadow(0 0 30px rgba(0, 210, 255, 0.4));
+    
+    pointer-events: none;
+    z-index: -2;
+}
+
+.text-gradient {
+    background: linear-gradient(to right, var(--accent), var(--accent-alt));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- NAVBAR & LOGO GLOW --- */
+.navbar {
+    padding: 1.2rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: rgba(3, 7, 18, 0.85);
+}
+.nav-flex { display: flex; justify-content: space-between; align-items: center; }
+
+.nav-logo { 
+    height: 45px; 
+    width: 45px; 
+    border-radius: 50%; 
+    background: white; 
+    object-fit: contain; 
+    /* Intense logo glow */
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.6), 0 0 40px rgba(0, 210, 255, 0.2);
+    border: 1px solid var(--accent);
+}
+
+.nav-links { display: flex; align-items: center; gap: 1.5rem; }
+.nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: 0.3s; }
+.nav-links a:hover { color: var(--accent); }
+.nav-cta { color: var(--accent) !important; border: 1px solid var(--accent); padding: 0.5rem 1.2rem; border-radius: 50px; }
+
+/* --- HERO --- */
+.hero { padding: 12rem 0 8rem; text-align: center; }
+.badge { background: rgba(0, 210, 255, 0.1); color: var(--accent); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; margin: 1.5rem 0; line-height: 1.1; }
+.hero p { color: var(--text-dim); max-width: 600px; margin: 0 auto 2.5rem; font-size: 1.15rem; }
+
+.btn-glow {
+    background: linear-gradient(45deg, var(--accent), var(--accent-alt));
+    padding: 1.1rem 2.5rem;
+    border-radius: 12px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0, 210, 255, 0.4);
+    transition: 0.3s;
+}
+.btn-glow:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0, 210, 255, 0.6); }
+
+.btn-outline {
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 1.1rem 2.5rem;
+    border-radius: 12px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+/* --- SECTIONS --- */
+.section { padding: 8rem 0; }
+.section-title { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 4rem; text-align: center; }
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 28px;
+    padding: 3rem;
+    transition: 0.4s ease;
+}
+.glass-card:hover { border-color: var(--accent); transform: translateY(-10px); }
+.price-tag { font-size: 3.2rem; font-weight: 800; color: var(--accent); margin-top: 1.5rem; }
+.small-price { font-weight: 700; color: var(--accent); margin-top: 1rem; font-size: 1.3rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+
+/* --- CHAT UI --- */
+.chat-wrapper { position: fixed; bottom: 2.5rem; right: 2.5rem; z-index: 9999; }
+.chat-bubble { width: 65px; height: 65px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.8rem; box-shadow: 0 12px 30px rgba(0, 210, 255, 0.4); }
+.chat-window { position: absolute; bottom: 85px; right: 0; width: 330px; background: #0f172a; border-radius: 24px; display: none; flex-direction: column; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.6); }
+.chat-head { background: var(--accent); color: #000; padding: 1.2rem; font-weight: 800; }
+.chat-body { height: 320px; padding: 1.2rem; overflow-y: auto; display: flex; flex-direction: column; background: #0f172a; }
+.chat-input-container { padding: 1.2rem; border-top: 1px solid rgba(255,255,255,0.05); }
+.chat-input-container input { width: 100%; background: #1e293b; border: none; padding: 1rem; border-radius: 12px; color: white; outline: none; }
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero { padding: 10rem 0 5rem; }
+}
